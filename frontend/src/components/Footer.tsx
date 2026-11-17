@@ -11,7 +11,7 @@ export default function Footer() {
             <p className="text-sm">Broadband Learning Center, Pemerintah Kota Surabaya</p>
           </div>
         </div>
-        <p className="text-sm">&copy; {new Date().getFullYear()} BLC Surabaya. Rebuild dengan Next.js.</p>
+        <p className="text-sm">&copy; {new Date().getFullYear()} BLC Surabaya.</p>
       </div>
     </footer>
   );
