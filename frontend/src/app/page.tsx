@@ -1,16 +1,23 @@
-import { apiGet } from "@/lib/api";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Programs from "@/components/Programs";
+import Steps from "@/components/Steps";
+import Locations from "@/components/Locations";
+import Faq from "@/components/Faq";
+import Footer from "@/components/Footer";
 
-type Ping = { message: string; app: string; time: string };
-
-export default async function Home() {
-  const data = await apiGet<Ping>("/ping");
-
+export default function Home() {
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold">BLC Surabaya</h1>
-      <pre className="mt-4 rounded bg-gray-100 p-4 text-sm text-black">
-        {JSON.stringify(data, null, 2)}
-      </pre>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <Programs />
+        <Steps />
+        <Locations />
+        <Faq />
+      </main>
+      <Footer />
+    </>
   );
 }
