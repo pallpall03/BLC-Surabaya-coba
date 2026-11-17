@@ -70,7 +70,7 @@ export default function Locations() {
               href={`/lokasi/${l.slug}`}
               className="group rounded-3xl border border-orange-100 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:border-blc-orange hover:shadow-xl"
             >
-              <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-orange-600">
+              <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-bold text-blc-orange-dark">
                 Surabaya {l.area}
               </span>
               <h3 className="mt-4 text-lg font-bold text-blc-navy">{l.name}</h3>

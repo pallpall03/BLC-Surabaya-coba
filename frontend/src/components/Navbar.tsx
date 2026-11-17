@@ -77,6 +77,12 @@ export default function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
+              href="/login"
+              className="hidden rounded-xl border-2 border-blc-navy px-4 py-1.5 text-sm font-bold text-blc-navy transition hover:bg-blc-navy hover:text-white sm:inline-block"
+            >
+              Masuk
+            </a>
+            <a
               href="#cara-daftar"
               className="hidden rounded-xl bg-blc-orange px-4 py-2 text-sm font-bold text-blc-navy shadow-md shadow-orange-500/30 transition hover:-translate-y-0.5 hover:brightness-105 sm:inline-block"
             >
@@ -111,9 +117,17 @@ export default function Navbar() {
             ))}
             <li>
               <a
+                href="/login"
+                className="mt-1 block rounded-xl border-2 border-blc-navy px-3 py-2 text-center text-sm font-bold text-blc-navy"
+              >
+                Masuk
+              </a>
+            </li>
+            <li>
+              <a
                 href="#cara-daftar"
                 onClick={() => setOpen(false)}
-                className="mt-1 block rounded-xl bg-blc-orange px-3 py-2.5 text-center text-sm font-bold text-blc-navy"
+                className="block rounded-xl bg-blc-orange px-3 py-2.5 text-center text-sm font-bold text-blc-navy"
               >
                 Daftar Gratis
               </a>
