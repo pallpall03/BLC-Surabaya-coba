@@ -44,10 +44,10 @@ class User extends Authenticatable
         return in_array($this->role, $roles, true);
     }
 
-    /** BLC tempat instruktur ditugaskan / akun pengunjung terdaftar. */
+    /** BLC tempat instruktur ditugaskan (atau akun user yang terhubung ke BLC). */
     public function blcs(): BelongsToMany
     {
-        return $this->belongsToMany(Blc::class);
+        return $this->belongsToMany(Blc::class)->withTimestamps();
     }
 
     public function participant(): HasOne

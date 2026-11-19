@@ -19,7 +19,7 @@ class AuthLoginTest extends TestCase
             'username' => 'budi',
             'email' => 'budi@example.com',
             'password' => 'rahasia123',
-            'role' => UserRole::Peserta,
+            'role' => UserRole::Pengguna,
             'is_active' => true,
         ], $attributes));
     }
@@ -42,7 +42,7 @@ class AuthLoginTest extends TestCase
         $response = $this->login(['login' => 'budi', 'password' => 'rahasia123']);
 
         $response->assertOk()
-            ->assertJsonPath('user.role', 'peserta')
+            ->assertJsonPath('user.role', 'pengguna')
             ->assertJsonPath('token_type', 'Bearer')
             ->assertJsonStructure(['token', 'expires_in', 'user' => ['id', 'name', 'username', 'email', 'role', 'role_label']]);
 
@@ -237,16 +237,16 @@ class AuthLoginTest extends TestCase
     {
         $this->getJson('/api/v1/admin/ping')->assertStatus(401);
 
-        Sanctum::actingAs($this->makeUser(['username' => 'peserta1', 'email' => 'p@example.com']));
+        Sanctum::actingAs($this->makeUser(['username' => 'user1', 'email' => 'p@example.com']));
         $this->getJson('/api/v1/admin/ping')->assertStatus(403);
 
-        Sanctum::actingAs($this->makeUser(['username' => 'admin1', 'email' => 'a@example.com', 'role' => UserRole::Admin]));
+        Sanctum::actingAs($this->makeUser(['username' => 'admin1', 'email' => 'a@example.com', 'role' => UserRole::SuperAdmin]));
         $this->getJson('/api/v1/admin/ping')->assertOk();
     }
 
     public function test_akun_yang_dinonaktifkan_langsung_kehilangan_akses(): void
     {
-        Sanctum::actingAs($this->makeUser(['is_active' => false, 'role' => UserRole::Admin]));
+        Sanctum::actingAs($this->makeUser(['is_active' => false, 'role' => UserRole::SuperAdmin]));
 
         $this->getJson('/api/v1/admin/ping')->assertStatus(403);
     }
