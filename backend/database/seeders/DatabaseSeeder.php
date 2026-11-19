@@ -13,7 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             KecamatanSeeder::class,
-            SuperadminSeeder::class,
+            KelurahanSeeder::class,
+            AdminSeeder::class,
         ]);
+
+        // Data contoh hanya untuk lokal, tidak pernah ikut ke produksi.
+        if (app()->environment('local')) {
+            $this->call(DemoMasterDataSeeder::class);
+        }
     }
 }
