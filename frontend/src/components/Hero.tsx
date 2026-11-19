@@ -32,10 +32,16 @@ export default function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#cara-daftar"
+              href="/login"
               className="rounded-2xl bg-blc-orange px-7 py-3.5 font-bold text-blc-navy shadow-lg shadow-orange-500/40 transition hover:-translate-y-1 hover:brightness-105"
             >
-              Mulai Daftar
+              Masuk
+            </a>
+            <a
+              href="/register"
+              className="rounded-2xl bg-blc-orange px-7 py-3.5 font-bold text-blc-navy shadow-lg shadow-orange-500/40 transition hover:-translate-y-1 hover:brightness-105"
+            >
+              Daftar
             </a>
             <a
               href="#lokasi"

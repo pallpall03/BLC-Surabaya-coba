@@ -12,11 +12,11 @@ export default function Steps() {
     <section id="cara-daftar" className="bg-white px-4 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal className="text-center">
-          <p className="font-bold text-blc-orange-dark">Cara Daftar</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-blc-navy sm:text-4xl">
-            Empat langkah mudah
-          </h2>
-        </Reveal>
+                    <p className="font-bold text-blc-orange-dark">Daftar Pengguna</p>
+                    <h2 className="mt-2 text-3xl font-extrabold text-blc-navy sm:text-4xl">
+                      Empat langkah mudah
+                    </h2>
+                  </Reveal>
 
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (

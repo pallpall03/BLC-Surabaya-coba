@@ -23,6 +23,7 @@ Route::prefix('v1')->group(function () {
         Route::middleware('throttle:login')->group(function () {
             Route::get('/captcha', [AuthController::class, 'captcha']);
             Route::post('/login', [AuthController::class, 'login']);
+            Route::post('/register', [AuthController::class, 'register']); // Hanya untuk role Pengguna
         });
 
         Route::middleware(['auth:sanctum', 'active'])->group(function () {

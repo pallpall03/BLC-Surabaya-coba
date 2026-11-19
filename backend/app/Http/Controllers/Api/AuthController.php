@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Exceptions\KantorkuUnavailable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterPenggunaRequest;
 use App\Http\Resources\UserResource;
+use App\Models\User;
+use App\Enums\UserRole;
 use App\Services\Auth\CaptchaService;
 use App\Services\Auth\CredentialAuthenticator;
 use App\Services\Auth\LoginAttempts;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -83,6 +87,30 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'expires_in' => $ttl * 60,
             'user' => UserResource::make($user->loadMissing('blcs'))->resolve($request),
+        ]);
+    }
+
+    public function register(RegisterPenggunaRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $user = User::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'phone' => $data['phone'] ?? null,
+            'role' => UserRole::Pengguna,
+            'is_active' => true,
+        ]);
+
+        $ttl = (int) config('blc.login.token_ttl_minutes', 480);
+        $token = $user->createToken('web', ['*'], now()->addMinutes($ttl))->plainTextToken;
+
+        return response()->json([
+            'token' => $token,
+            'token_type' => 'Bearer',
+            'expires_in' => $ttl * 60,
+            'user' => UserResource::make($user)->resolve($request),
         ]);
     }
 

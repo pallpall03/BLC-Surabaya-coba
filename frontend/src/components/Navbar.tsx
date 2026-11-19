@@ -83,7 +83,7 @@ export default function Navbar() {
               Masuk
             </a>
             <a
-              href="#cara-daftar"
+              href="/register"
               className="hidden rounded-xl bg-blc-orange px-4 py-2 text-sm font-bold text-blc-navy shadow-md shadow-orange-500/30 transition hover:-translate-y-0.5 hover:brightness-105 sm:inline-block"
             >
               Daftar Gratis
@@ -125,7 +125,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#cara-daftar"
+                href="/register"
                 onClick={() => setOpen(false)}
                 className="block rounded-xl bg-blc-orange px-3 py-2.5 text-center text-sm font-bold text-blc-navy"
               >
